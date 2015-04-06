@@ -1,0 +1,28 @@
+{
+  "name": "dag-to-layers",
+  "version": "1.0.0",
+  "description": "assign each vertex of a dag to a layer, inserting dummy vertices",
+  "main": "./lib/assign-layers.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/chrisdickinson/dag-to-layers.git"
+  },
+  "keywords": [
+    "dag",
+    "layers",
+    "sugiyama"
+  ],
+  "author": "Chris Dickinson <chris@neversaw.us> (http://neversaw.us/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chrisdickinson/dag-to-layers/issues"
+  },
+  "homepage": "https://github.com/chrisdickinson/dag-to-layers",
+  "devDependencies": {
+    "digraph-tag": "^1.0.0",
+    "tape": "^4.0.0"
+  }
+}
