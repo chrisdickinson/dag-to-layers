@@ -21,14 +21,6 @@ test('assigns layers to a dag', function(assert) {
 
   for (let i = 0; i < layering.length; ++i) {
     let layer = layering[i]
-    process.stdout.write(`L${i}: `)
-    for (let vertex of layer) {
-      process.stdout.write(vertex + ' ')
-    }
-    console.log()
-  }
-  for (let i = 0; i < layering.length; ++i) {
-    let layer = layering[i]
     for (let vertex of layer) {
       seen.add(vertex)
       let outgoing = graph.outgoing.get(vertex)
