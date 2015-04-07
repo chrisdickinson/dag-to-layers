@@ -1,6 +1,6 @@
 {
   "name": "dag-to-layers",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "assign each vertex of a dag to a layer, inserting dummy vertices",
   "main": "./lib/assign-layers.js",
   "scripts": {
