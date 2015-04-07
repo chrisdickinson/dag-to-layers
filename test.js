@@ -8,20 +8,26 @@ test('assigns layers to a dag', function(assert) {
   const graph = digraph`
     A -> B
     B -> C
+    C -> D
     X -> Y
-    D -> E
     Y -> Z
     Z -> D
     D -> U
     U -> V
-    Y -> B
   `
 
   const layering = assignLayers(graph.vertices, graph.incoming, graph.outgoing)
   const seen = new Set()
 
   for (let i = 0; i < layering.length; ++i) {
-    let last = layering[i - 1]
+    let layer = layering[i]
+    process.stdout.write(`L${i}: `)
+    for (let vertex of layer) {
+      process.stdout.write(vertex + ' ')
+    }
+    console.log()
+  }
+  for (let i = 0; i < layering.length; ++i) {
     let layer = layering[i]
     for (let vertex of layer) {
       seen.add(vertex)
@@ -34,7 +40,16 @@ test('assigns layers to a dag', function(assert) {
         let name =
           (edge[0].phony ? '*' : edge[0]) + ' → ' +
           (edge[1].phony ? '*' : edge[1])
-        assert.ok(last.has(edge[1]), name + ' points to next layer')
+
+        let ok = false
+        for (let j = i - 1; j > -1; --j) {
+          if (layering[j].has(edge[1])) {
+            ok = true
+            break
+          }
+        }
+
+        assert.ok(ok, name + ' points to subsequent layer')
       }
     }
   }
